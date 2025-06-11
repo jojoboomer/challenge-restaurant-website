@@ -1,0 +1,63 @@
+<div class="w-[105%] relative -left- top-10  overflow-hidden flex flex-col justify-center items-center rotate-2 bg-accent">
+  <div class="flex w-full items-center relative ">
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-7xl h-30"
+    >
+      Life is too short to eat just salads <img
+        src="/asterisc.svg"
+        alt="*"
+        class="size-12 inline mx-4"
+      />
+    </div>
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-7xl stroked"
+    >
+      Life is too short to eat just salads <img
+        src="/asterisc.svg"
+        alt="*"
+        class="size-12 inline mx-4"
+      />
+    </div>
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-7xl"
+    >
+      Life is too short to eat just salads <img
+        src="/asterisc.svg"
+        alt="*"
+        class="size-12 inline mx-4"
+      />
+    </div>
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-7xl stroked"
+    >
+      Life is too short to eat just salads <img
+        src="/asterisc.svg"
+        alt="*"
+        class="size-12 inline mx-4"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .stroked {
+    -webkit-text-stroke: 2px #ee4a1e;
+    color: transparent;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sentences = gsap.utils.toArray(".animated-text");
+
+    const tl = gsap.timeline({ repeat: -1 });
+    const duration = 20;
+    const totalSlides = sentences.length;
+
+    tl.to(sentences, {
+      xPercent: `-=${(totalSlides / 2) * 100}`,
+      duration: duration,
+      ease: "none",
+    });
+  });
+</script>

@@ -1,0 +1,89 @@
+
+<section class="relative py-0 px-2 h-screen bg-black min-h-screen">
+  <div
+    class="group border rounded-lg h-full overflow-hidden  bg-[url(/banner-3.png)] bg-cover bg-center flex items-center justify-center gap-6"
+  >
+    <h2 class="text-cta z-10 relative text-4xl uppercase text-white font-bowlby">
+      we’re different
+    </h2>
+
+    <div
+      class="play-cta z-10 relative peer bg-primary text-white rounded-full size-16 hover:cursor-pointer flex items-center justify-center "
+    >
+      <svg
+        fill="#ffffff"
+        width="32px"
+        height="32px"
+        viewBox="0 0 32 32"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="#ffffff"
+        ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+          <title>play</title>
+          <path
+            d="M5.92 24.096q0 1.088 0.928 1.728 0.512 0.288 1.088 0.288 0.448 0 0.896-0.224l16.16-8.064q0.48-0.256 0.8-0.736t0.288-1.088-0.288-1.056-0.8-0.736l-16.16-8.064q-0.448-0.224-0.896-0.224-0.544 0-1.088 0.288-0.928 0.608-0.928 1.728v16.16z"
+          ></path>
+        </g></svg
+      >
+    </div>
+    <div
+      class="back absolute inset-0 bg-black/40 backdrop-blur-[1px] backdrop-grayscale-100 peer-hover:backdrop-grayscale-0 peer-hover:backdrop-blur-none transition-all duration-500"
+    >
+    </div>
+    <img src="/organic.png" alt="Organic" class="organic absolute -bottom-20 left-10" />
+  </div>
+</section>
+
+<script is:inline>
+  gsap.from('.organic', {
+    duration: 1.5,
+    scale: 0,
+    rotate: 360 * 2,
+    ease: "bounce.out",
+    scrollTrigger: {
+      trigger: ".organic",
+      start: "top bottom",
+    },
+  })
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#cta",
+      start: "top bottom",
+    },
+  });
+
+  tl
+  .from('.text-cta', {
+    duration: 1,
+    x: -30,
+    opacity: 0,
+    ease: "power1.out",
+  })
+  .from('.play-cta', {
+    duration: 1,
+    scale: 0,
+    opacity: 0,
+    ease: "bounce.out",
+  },'<');
+
+  const hover = gsap.timeline();
+
+  hover
+  .to('.play-cta',{
+    scale: 2,
+
+  })
+  .from('.back',{
+
+  },'<');
+  
+  document.querySelector('.play-cta').addEventListener('mouseover', () => {
+    hover.play()
+  })
+
+
+</script>

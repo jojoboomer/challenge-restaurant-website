@@ -1,0 +1,138 @@
+---
+
+const menu = [
+  {
+    name: "Shrimp Yo!",
+    image: "/menu1.png",
+    price: "$9.99",
+    discount: null,
+    description: "Grilled shrimp burger with coleslaw in a homemade fluffy bun",
+  },
+  {
+    name: "Double Trouble",
+    image: "/menu2.png",
+    price: "$10.99",
+    discount: null,
+    description:
+      "Angus Beef burger with Gouda cheese and bacon in a sesame bun.",
+  },
+  {
+    name: "Juicy Jo",
+    image: "/menu3.png",
+    price: "$8.99",
+    discount: "$7.99",
+    description:
+      "Beef Burger with fried onion toped with ragu sauce in a rye bun.",
+  },
+  {
+    name: "Crispy Chi",
+    image: "/menu4.png",
+    price: "$8.99",
+    discount: null,
+    description:
+      "Beef Burger with fried onion toped with ragu sauce in a rye bun.",
+  },
+];
+---
+
+<section id="menu" class="px-16 min-h-screen py-12">
+  <div class="pt-16 flex items-center justify-between">
+    <div class="menu-title">
+      <h2 class="font-bowlby text-6xl text-primary uppercase leading-none">
+        popular burgers
+      </h2>
+      <p class="text-primary max-w-lg">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+    </div>
+    <div>
+      <a href="#menu" class="link group text-primary text-base uppercase flex gap-1 items-center">
+        See more
+        <svg
+          class="relative left-0 size-5 rtl:rotate-180 transition-all duration-150 group-hover:left-2"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="menu grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+    {
+      menu.map((item) => (
+        <div class="menu-card relative space-y-2 rounded-lg overflow-hidden">
+          <div class="group relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-black/20 group-hover:bg-black/10 z-10 transition-colors duration-300"></div>
+            <img
+            src={item.image}
+            alt={item.name}
+            class="group-hover:scale-105 transition-transform duration-300"
+          />
+          </div>
+          <div class="flex flex-col items-center justify-between p-1 gap-1">
+            <h4 class="font-bold text-xl ">{item.name}</h4>
+            <p class="text-gray-700 text-center">{item.description}</p>
+          </div>
+          <div class="flex items-center justify-between p-4">
+            <p class="text-center text-primary">only {item.discount ? <span class="line-through">{item.price}</span><span class="font-bold"> {item.discount}</span> : item.price}</p>
+            <button class="bg-primary px-3 py-1 rounded-lg text-white hover:scale-110 transition duration-150 ease-out cursor-pointer">Add to cart</button>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline>
+  window.addEventListener("load", () => {
+    let split = SplitText.create(".menu-title", {
+      type: "lines",
+    });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#menu",
+        start: "top 90%",
+        end: "bottom 25%",
+        toggleActions: "restart none none complete",
+      },
+    });
+
+    tl
+    .from(split.lines, {
+      duration: 0.5,
+      y: 30,
+      autoAlpha: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    })
+    .from(".link", {
+      duration: 1,
+      y: 30,
+      autoAlpha: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    },"<")
+    .from(
+      ".menu-card",
+      {
+        duration: 1,
+        y: 30,
+        autoAlpha: 0,
+        stagger: 0.2,
+        ease: "power2.out",
+        stagger: 0.2,
+      },
+      "<"
+    );
+  });
+</script>

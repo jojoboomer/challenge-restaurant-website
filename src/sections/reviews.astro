@@ -1,0 +1,209 @@
+---
+const reviews = [
+  {
+    name: "UIDELI.COM",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    name: "Andreea @eattwice",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    name: "Mathew eats all",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    name: "Jessica from Eater.com",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    name: "just maria",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    name: "Jessica from Eater.com",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+];
+---
+
+<section
+  id="reviews"
+  class="w-full py-12 flex items-center justify-center relative gap-24"
+>
+  <span
+    class="absolute right-0 bottom-0 font-black opacity-10 text-[12rem]"
+  >Favorite Burger</span>
+  <button
+    id="prev"
+    class="text-primary w-12 cursor-pointer hover:scale-120 transition-transform duration-200 ease-out"
+  >
+    <svg
+      class="fill-primary rotate-180"
+      version="1.1"
+      baseProfile="tiny"
+      viewBox="0 0 42 42"
+      xml:space="preserve"
+      ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+        <polygon
+          fill-rule="evenodd"
+          points="13.933,1 34,21.068 14.431,40.637 9.498,35.704 24.136,21.068 9,5.933 "
+        ></polygon>
+      </g></svg
+    >
+  </button>
+
+  <div class="slider w-1/3 h-96 relative overflow-hidden">
+    {
+      reviews.map((item) => (
+        <div class="slide w-full h-full absolute top-0 left-0 flex justify-center items-center">
+          <article class="flex flex-col items-center justify-between p-4">
+            <div class="bg-primary size-16 rounded-full p-4">
+              <svg
+                viewBox="0 0 16 16"
+                fill="white"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                fill="#000000"
+              >
+                <>
+                  <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <rect
+                      width="16"
+                      height="16"
+                      id="icon-bound"
+                      fill="none"
+                    />{" "}
+                    <path d="M16,3V1c-4.188,0-7,2.812-7,7v7h7V8h-5C11,4.916,12.916,3,16,3z M0,8v7h7V8H2c0-3.084,1.916-5,5-5V1C2.812,1,0,3.812,0,8z" />{" "}
+                  </g>
+                </>
+              </svg>
+            </div>
+            <p class="text-black text-center text-xl mt-6 mb-3">{item.text}</p>
+            <h4 class="font-bold text-2xl mb-2 text-primary">{item.name}</h4>
+          </article>
+        </div>
+      ))
+    }
+  </div>
+
+  <button
+    id="next"
+    class="text-primary w-12 cursor-pointer hover:scale-120 transition-transform duration-200 ease-out"
+  >
+    <svg
+      class="fill-primary"
+      version="1.1"
+      baseProfile="tiny"
+      viewBox="0 0 42 42"
+      xml:space="preserve"
+      ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+        <polygon
+          fill-rule="evenodd"
+          points="13.933,1 34,21.068 14.431,40.637 9.498,35.704 24.136,21.068 9,5.933 "
+        ></polygon>
+      </g></svg
+    >
+  </button>
+</section>
+
+<script is:inline>
+  window.addEventListener("load", () => {
+    const sliders = gsap.utils.toArray(".slider");
+    const slidesArray = sliders.map((slider) =>
+      gsap.utils.toArray(".slide", slider)
+    );
+    const next = document.getElementById("next");
+    const prev = document.getElementById("prev");
+    let currentIndex = 0;
+    let isTweening = false;
+
+    slidesArray.forEach((slides) => {
+      slides.forEach((slide, i) => {
+        gsap.set(slide, {
+          xPercent: i > 0 && 100,
+        });
+      });
+    });
+
+    const gotoSlide = (value) => {
+      if (isTweening) return;
+      isTweening = true;
+      const first = slidesArray[0];
+      const currentSlides = [];
+      const nextSlides = [];
+      slidesArray.forEach((slides) => currentSlides.push(slides[currentIndex]));
+      if (first[currentIndex + value]) {
+        currentIndex += value;
+      } else {
+        currentIndex = value > 0 ? 0 : first.length - 1;
+      }
+      slidesArray.forEach((slides) => nextSlides.push(slides[currentIndex]));
+      if (value > 0) {
+        gsap.set(nextSlides, { xPercent: 100 });
+        gsap.to(currentSlides, {
+          xPercent: -100,
+          onComplete: () => (isTweening = false),
+        });
+      } else {
+        gsap.set(nextSlides, { xPercent: -100 });
+        gsap.to(currentSlides, {
+          xPercent: 100,
+          onComplete: () => (isTweening = false),
+        });
+      }
+      gsap.to(nextSlides, { xPercent: 0 });
+    };
+
+    next.addEventListener("click", () => gotoSlide(1));
+    prev.addEventListener("click", () => gotoSlide(-1));
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#reviews",
+        start: "50% bottom",
+        toggleActions: "restart none none complete",
+      },
+    });
+
+    tl.from(".slider", {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    })
+      .from(
+        "#next",
+        {
+          opacity: 0,
+          scale: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "<"
+      )
+      .from(
+        "#prev",
+        {
+          opacity: 0,
+          scale: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "<"
+      );
+  });
+</script>

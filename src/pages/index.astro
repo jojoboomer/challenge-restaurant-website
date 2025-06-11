@@ -1,11 +1,49 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import About from "../sections/about.astro";
+import Cta from "../sections/cta.astro";
+import Flag from "../sections/flag.astro";
+import Footer from "../sections/footer.astro";
+import Hero from "../sections/hero.astro";
+import Products from "../sections/products.astro";
+import Reviews from "../sections/reviews.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <Hero />
+  <About />
+  <Cta />
+  <Products />
+  <!-- <Products /> -->
+  <Flag/>
+  <Reviews />
+  <Footer />
+
+ 
+
+  <!-- <script is:inline>
+    window.addEventListener("load", () => {
+      gsap.to("#home", {
+        yPercent: -100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#about",
+          // start: "top bottom", // the default values
+          // end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to("#about", {
+        yPercent: 50,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#about",
+          // start: "top bottom", // the default values
+          // end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+  </script> -->
 </Layout>

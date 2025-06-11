@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Oswald:wght@200..700&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+@theme {
+  --color-primary: #ee4a1e;
+  --font-oswald: "Oswald", sans-serif;
+  --font-bowlby: "Bowlby One", sans-serif;
+  --padding-local: "48px";
+  --color-accent: #EEF866;
+}

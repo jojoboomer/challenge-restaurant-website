@@ -1,0 +1,122 @@
+---
+import Fav from "../components/fav.astro";
+---
+
+<section id="about" class="relative bg-cover bg-center px-16 min-h-screen py-12">
+  <Fav styles="fav-icon absolute right-4 z-10" />
+  <div
+    class="section1 relative h-full grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8 py-12"
+  >
+    <div class="h-full">
+      <h2
+        class="about-title z-10 md:absolute md:max-w-4xl font-bowlby text-6xl text-primary uppercase leading-none"
+      >
+        Hi, We’re Jo’s Burgers, a collective of creators who Love burger and
+        good mood.
+      </h2>
+    </div>
+    <div class="h-full">
+      <div class="rotate-4 flex flex-col items-center">
+        <img
+          src="/person.png"
+          alt="Picture of Jo"
+          class="picture h-[450px] rounded shadow-lg"
+        />
+        <p class="text-black font-normal">
+          This is Jo. He started everything 40 years ago.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="section2 h-full grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8 py-12"
+  >
+    <div class="h-full">
+      <img src="/open.png" alt="Picture of Jo" class="picture h-[450px]" />
+    </div>
+    <div class="about-desc h-full flex flex-col justify-center w-full gap-4">
+      <h2 class="z-10 font-bowlby text-6xl text-primary uppercase leading-none">
+        Food is for everyone.
+      </h2>
+      <p class="text-primary max-w-sm">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  window.addEventListener("load", () => {
+    const Title = SplitText.create(".about-title", {
+      type: "words,lines",
+      linesClass: "line",
+      autoSplit: true,
+      mask: "lines",
+    });
+
+    const tl1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section1",
+        start: "50% bottom",
+      toggleActions: 'restart none none complete'
+      },
+    });
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section2",
+        start: "50% bottom",
+      toggleActions: 'restart none none complete'
+      },
+    });
+
+    tl1
+      .from(Title.lines, {
+        duration: 1,
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.1,
+        ease: "expo.out",
+      })
+      .from(
+        ".section1 .picture",
+        {
+          duration: 1,
+          autoAlpha: 0,
+          ease: "power2.out",
+        },
+        "<"
+      );
+
+    tl2
+      .from(".about-desc", {
+        duration: 1,
+        y: 50,
+        autoAlpha: 0,
+        ease: "power2.out",
+      })
+      .from(
+        ".section2 .picture",
+        {
+          duration: 1,
+          autoAlpha: 0,
+          ease: "power2.out",
+        },
+        "<"
+      );
+
+    gsap.to(".fav-icon", {
+      duration: 1,
+      y: 600,
+      rotation: 360,
+      scrollTrigger: {
+        trigger: "#about",
+        start: "middle bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  });
+</script>
