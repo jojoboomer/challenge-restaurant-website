@@ -4,54 +4,58 @@ import Header from "../components/Header.astro";
 
 <section
   id="home"
-  class="relative w-full h-screen flex gap-4
-    bg-gradient-to-br from-50% to-50% bg-linear-90 bg-gradient
-    md:bg-gradient-to-r from-[#F6F2F0] md:from-65% to-orange-600 md:to-35%
-    flex-col justify-center pl-16 py-12"
+  class="relative w-full h-screen flex gap-4 overflow-hidden
+    bg-primary text-center md:text-start
+    md:bg-gradient-to-r md:from-[#F6F2F0] md:from-65% md:to-primary md:to-35%
+    flex-col justify-center px-8 md:pl-16"
 >
   <Header />
-    <h1 class="hero-text font-bowlby text-primary text-6xl max-w-lg">
-      NEW YORK’S <span class="stroked">FAVORITE</span> BURGER
-    </h1>
-    <p class="hero-text text-2xl max-w-lg bottom-3 left-5">
-      In a world so painfully serious, yet so ridiculous, you knew it was only a
-      matter of time before plant-based steak became a thing.
-    </p>
-    <a
-      class="btn-menu relative mt-8 w-fit group inline-flex items-center overflow-hidden rounded-sm text-white bg-primary px-8 py-3 focus:ring-3 focus:outline-hidden"
-      href="#menu"
-    >
-      <span class="absolute -end-full transition-all group-hover:end-4">
-        <svg
-          class="size-5 rtl:rotate-180"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
-      </span>
+  <h1 class="hero-text max-w-lg text-white md:text-primary md:text-start">
+    NEW YORK’S <span class="stroked">FAVORITE</span> BURGER
+  </h1>
+  <p class="hero-text text-2xl max-w-lg bottom-3 left-5 text-accent md:text-black">
+    In a world so painfully serious, yet so ridiculous, you knew it was only a
+    matter of time before plant-based steak became a thing.
+  </p>
+  <a
+    class="btn-menu mx-auto md:mx-0 relative mt-8 w-fit group inline-flex items-center overflow-hidden rounded-sm text-primary bg-white md:text-white md:bg-primary px-6 py-2 md:px-8 md:py-3 focus:ring-3 focus:outline-hidden"
+    href="#menu"
+  >
+    <span class="absolute -end-full transition-all group-hover:end-4">
+      <svg
+        class="size-5 rtl:rotate-180"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </span>
 
-      <span class="font-medium transition-all group-hover:me-4 duration-150">
-        Browse Menu
-      </span>
-    </a>
-    <img
-      src="/ham2.png"
-      alt="Burger"
-      class="hero-img absolute right-1/6 top-1/2 -translate-y-1/2 size-[500px]"
-    />
+    <span class="font-medium transition-all group-hover:me-4 duration-150 text-sm md:text-base">
+      Browse Menu
+    </span>
+  </a>
+  <img
+    src="/ham2.png"
+    alt="Burger"
+    class="absolute hero-img -bottom-40 md:top-1/2 md:-translate-y-1/2 left-[50%] md:left-[65%] -translate-x-1/2 w-[clamp(300px,60vw,600px)]"
+  />
 </section>
 
 <style>
   .stroked {
-    -webkit-text-stroke: 2px #ee4a1e;
-    color: #EEF866 ;
+    color: #eef866;
+  }
+  @media only screen and (min-width: 48rem) {
+    .stroked {
+      -webkit-text-stroke: 2px #ee4a1e;
+    }
   }
 </style>
 
@@ -103,7 +107,7 @@ import Header from "../components/Header.astro";
         ".hero-img",
         {
           duration: 1,
-          x: -100,
+          x: 100,
           autoAlpha: 0,
           ease: "power2.out",
         },

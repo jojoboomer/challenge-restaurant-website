@@ -29,10 +29,10 @@ const reviews = [
 
 <section
   id="reviews"
-  class="w-full py-12 flex items-center justify-center relative gap-24"
+  class="w-full py-12 flex items-center justify-center relative gap:8 md:12 lg:gap-24"
 >
   <span
-    class="absolute right-0 bottom-0 font-black opacity-10 text-[12rem]"
+    class="absolute right-0 bottom-0 font-black opacity-10 text-[clamp(6rem,5vw,12rem)] text-right"
   >Favorite Burger</span>
   <button
     id="prev"
@@ -56,7 +56,7 @@ const reviews = [
     >
   </button>
 
-  <div class="slider w-1/3 h-96 relative overflow-hidden">
+  <div class="slider w-full md:w-1/3 h-96 relative overflow-hidden">
     {
       reviews.map((item) => (
         <div class="slide w-full h-full absolute top-0 left-0 flex justify-center items-center">

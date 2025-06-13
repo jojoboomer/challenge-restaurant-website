@@ -36,9 +36,9 @@ const menu = [
 ---
 
 <section id="menu" class="px-16 min-h-screen py-12">
-  <div class="pt-16 flex items-center justify-between">
+  <div class="pt-16 flex flex-col md:flex-row items-center justify-between">
     <div class="menu-title">
-      <h2 class="font-bowlby text-6xl text-primary uppercase leading-none">
+      <h2>
         popular burgers
       </h2>
       <p class="text-primary max-w-lg">
@@ -49,7 +49,7 @@ const menu = [
       </p>
     </div>
     <div>
-      <a href="#menu" class="link group text-primary text-base uppercase flex gap-1 items-center">
+      <a href="#menu" class="link group text-primary uppercase gap-1 items-center hidden md:flex">
         See more
         <svg
           class="relative left-0 size-5 rtl:rotate-180 transition-all duration-150 group-hover:left-2"
@@ -76,11 +76,11 @@ const menu = [
             <img
             src={item.image}
             alt={item.name}
-            class="group-hover:scale-105 transition-transform duration-300"
+            class="group-hover:scale-105 transition-transform duration-300 w-full bg-center object-cover"
           />
           </div>
           <div class="flex flex-col items-center justify-between p-1 gap-1">
-            <h4 class="font-bold text-xl ">{item.name}</h4>
+            <h4 class="font-bold text-[clamp(1.5rem,2vw,1.75rem)] ">{item.name}</h4>
             <p class="text-gray-700 text-center">{item.description}</p>
           </div>
           <div class="flex items-center justify-between p-4">
@@ -91,6 +91,24 @@ const menu = [
       ))
     }
   </div>
+  <div class="w-full flex justify-end">
+      <a href="#menu" class="link group text-primary uppercase flex gap-1 items-center mt-8 md:hidden text-right">
+        See more
+        <svg
+          class="relative left-0 size-5 rtl:rotate-180 transition-all duration-150 group-hover:left-2"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
 </section>
 
 <script is:inline>

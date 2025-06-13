@@ -1,19 +1,17 @@
 
-<section class="relative py-0 px-2 h-screen bg-black min-h-screen">
+<section class="relative py-0 px-2 h-[50vh] lg:h-screen bg-black ">
   <div
-    class="group border rounded-lg h-full overflow-hidden  bg-[url(/banner-3.png)] bg-cover bg-center flex items-center justify-center gap-6"
+    class="group border rounded-lg h-full overflow-hidden bg-[url(/banner-3.png)] bg-cover bg-center flex items-center justify-center gap-2 md:gap-6"
   >
-    <h2 class="text-cta z-10 relative text-4xl uppercase text-white font-bowlby">
+    <span class="w-fit text-cta z-10 relative uppercase font-bold text-[clamp(1.5rem,5vw,3.75rem)] font-bowlby text-primary">
       we’re different
-    </h2>
-
+    </span>
     <div
-      class="play-cta z-10 relative peer bg-primary text-white rounded-full size-16 hover:cursor-pointer flex items-center justify-center "
+      class="play-cta z-10 relative peer bg-primary text-white rounded-full size-12 lg:size-16 hover:cursor-pointer flex items-center justify-center "
     >
       <svg
         fill="#ffffff"
-        width="32px"
-        height="32px"
+        class="size-7 lg:size-10"
         viewBox="0 0 32 32"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +31,7 @@
       class="back absolute inset-0 bg-black/40 backdrop-blur-[1px] backdrop-grayscale-100 peer-hover:backdrop-grayscale-0 peer-hover:backdrop-blur-none transition-all duration-500"
     >
     </div>
-    <img src="/organic.png" alt="Organic" class="organic absolute -bottom-20 left-10" />
+    <img src="/organic.png" alt="Organic" class="organic absolute -bottom-20 md:left-20 " />
   </div>
 </section>
 
