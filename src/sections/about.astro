@@ -1,28 +1,34 @@
 ---
-import Fav from "../components/fav.astro";
+import Fav from "@/components/fav.astro";
+import PersonImage from "@/assets/person.png";
+import OpenImage from "@/assets/open.png";
+import Image from "astro/components/Image.astro";
 ---
 
-<section id="about" class="relative bg-cover bg-center px-16 min-h-screen py-12">
+<section
+  class="relative bg-cover bg-center px-16 min-h-screen py-12"
+  id="about"
+>
   <Fav styles="fav-icon absolute right-4 z-10" />
   <div
     class="section1 relative h-full grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8 py-12"
   >
     <div class="h-full">
-      <h2
-        class="about-title z-10 md:absolute md:max-w-2xl"
-      >
+      <h2 class="about-title z-10 md:absolute md:max-w-2xl">
         Hi, We’re Jo’s Burgers, a collective of creators who Love burger and
         good mood.
       </h2>
     </div>
     <div class="h-full">
       <div class="rotate-0 md:rotate-4 flex flex-col items-center">
-        <img
-          src="/person.png"
+        <Image
+          width={800}
+          height={600}
           alt="Picture of Jo"
           class="picture w-full max-w-md rounded shadow-lg"
+          src={PersonImage}
         />
-        <p class="text-black font-normal w-full">
+        <p class="text-black font-normal w-full text-center">
           This is Jo. He started everything 40 years ago.
         </p>
       </div>
@@ -32,12 +38,16 @@ import Fav from "../components/fav.astro";
     class="section2 h-full grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8 py-12"
   >
     <div class="h-full">
-      <img src="/open.png" alt="Picture of Jo" class="picture w-full max-w-md" />
+      <Image
+        width={800}
+        height={600}
+        alt="Picture of open place"
+        class="picture w-full max-w-md"
+        src={OpenImage}
+      />
     </div>
     <div class="about-desc h-full flex flex-col justify-center w-full gap-4">
-      <h2 class="z-10">
-        Food is for everyone.
-      </h2>
+      <h2 class="z-10">Food is for everyone.</h2>
       <p class="text-primary max-w-md">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -48,7 +58,10 @@ import Fav from "../components/fav.astro";
   </div>
 </section>
 
-<script is:inline>
+<script>
+  import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
+
   window.addEventListener("load", () => {
     const Title = SplitText.create(".about-title", {
       type: "words,lines",
@@ -61,14 +74,14 @@ import Fav from "../components/fav.astro";
       scrollTrigger: {
         trigger: ".section1",
         start: "50% bottom",
-      toggleActions: 'restart none none complete'
+        toggleActions: "restart none none complete",
       },
     });
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: ".section2",
         start: "50% bottom",
-      toggleActions: 'restart none none complete'
+        toggleActions: "restart none none complete",
       },
     });
 
@@ -83,7 +96,7 @@ import Fav from "../components/fav.astro";
       .from(
         ".section1 .picture",
         {
-          duration: 1,
+          duration: 2,
           autoAlpha: 0,
           ease: "power2.out",
         },
@@ -100,7 +113,7 @@ import Fav from "../components/fav.astro";
       .from(
         ".section2 .picture",
         {
-          duration: 1,
+          duration: 2,
           autoAlpha: 0,
           ease: "power2.out",
         },

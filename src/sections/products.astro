@@ -1,16 +1,22 @@
 ---
 
+import Menu1 from '@/assets/menu1.png'
+import Menu2 from '@/assets/menu2.png'
+import Menu3 from '@/assets/menu3.png'
+import Menu4 from '@/assets/menu4.png'
+import Image from 'astro/components/Image.astro';
+
 const menu = [
   {
     name: "Shrimp Yo!",
-    image: "/menu1.png",
+    image: Menu1,
     price: "$9.99",
     discount: null,
     description: "Grilled shrimp burger with coleslaw in a homemade fluffy bun",
   },
   {
     name: "Double Trouble",
-    image: "/menu2.png",
+    image: Menu2,
     price: "$10.99",
     discount: null,
     description:
@@ -18,7 +24,7 @@ const menu = [
   },
   {
     name: "Juicy Jo",
-    image: "/menu3.png",
+    image: Menu3,
     price: "$8.99",
     discount: "$7.99",
     description:
@@ -26,7 +32,7 @@ const menu = [
   },
   {
     name: "Crispy Chi",
-    image: "/menu4.png",
+    image: Menu4,
     price: "$8.99",
     discount: null,
     description:
@@ -35,7 +41,7 @@ const menu = [
 ];
 ---
 
-<section id="menu" class="px-16 min-h-screen py-12">
+<section class="px-16 min-h-screen py-12" id="menu">
   <div class="pt-16 flex flex-col md:flex-row items-center justify-between">
     <div class="menu-title">
       <h2>
@@ -49,20 +55,14 @@ const menu = [
       </p>
     </div>
     <div>
-      <a href="#menu" class="link group text-primary uppercase gap-1 items-center hidden md:flex">
+      <a class="link group text-primary uppercase gap-1 items-center hidden md:flex" href="#menu">
         See more
         <svg
           class="relative left-0 size-5 rtl:rotate-180 transition-all duration-150 group-hover:left-2"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          fill="none"            stroke="currentColor"            viewBox="0 0 24 24"            xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            d="M17 8l4 4m0 0l-4 4m4-4H3"              stroke-linecap="round"              stroke-linejoin="round"              stroke-width="2"></path>
         </svg>
       </a>
     </div>
@@ -73,10 +73,12 @@ const menu = [
         <div class="menu-card relative space-y-2 rounded-lg overflow-hidden">
           <div class="group relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-full bg-black/20 group-hover:bg-black/10 z-10 transition-colors duration-300"></div>
-            <img
+            <Image
+            height={600}
+            width={800}
+            alt={item.name}              
+            class="group-hover:scale-105 transition-transform duration-300 w-full bg-center object-cover"              
             src={item.image}
-            alt={item.name}
-            class="group-hover:scale-105 transition-transform duration-300 w-full bg-center object-cover"
           />
           </div>
           <div class="flex flex-col items-center justify-between p-1 gap-1">
@@ -92,26 +94,23 @@ const menu = [
     }
   </div>
   <div class="w-full flex justify-end">
-      <a href="#menu" class="link group text-primary uppercase flex gap-1 items-center mt-8 md:hidden text-right">
+      <a class="link group text-primary uppercase flex gap-1 items-center mt-8 md:hidden text-right" href="#menu">
         See more
         <svg
           class="relative left-0 size-5 rtl:rotate-180 transition-all duration-150 group-hover:left-2"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          fill="none"            stroke="currentColor"            viewBox="0 0 24 24"            xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            d="M17 8l4 4m0 0l-4 4m4-4H3"              stroke-linecap="round"              stroke-linejoin="round"              stroke-width="2"></path>
         </svg>
       </a>
     </div>
 </section>
 
-<script is:inline>
+<script >
+  import { gsap } from 'gsap';
+import { SplitText } from "gsap/SplitText";
+
   window.addEventListener("load", () => {
     let split = SplitText.create(".menu-title", {
       type: "lines",
@@ -148,7 +147,6 @@ const menu = [
         autoAlpha: 0,
         stagger: 0.2,
         ease: "power2.out",
-        stagger: 0.2,
       },
       "<"
     );

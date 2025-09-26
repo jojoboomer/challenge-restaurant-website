@@ -28,20 +28,16 @@ const reviews = [
 ---
 
 <section
-  id="reviews"
-  class="w-full py-12 flex items-center justify-center relative gap:8 md:12 lg:gap-24"
+  class="w-full py-12 flex items-center justify-center relative gap:8 md:12 lg:gap-24"    id="reviews"
 >
   <span
     class="absolute right-0 bottom-0 font-black opacity-10 text-[clamp(6rem,5vw,12rem)] text-right"
   >Favorite Burger</span>
   <button
-    id="prev"
-    class="text-primary w-12 cursor-pointer hover:scale-120 transition-transform duration-200 ease-out"
+    class="text-primary w-12 cursor-pointer hover:scale-120 transition-transform duration-200 ease-out"      id="prev"
   >
     <svg
-      class="fill-primary rotate-180"
-      version="1.1"
-      baseProfile="tiny"
+      baseProfile="tiny"        class="fill-primary rotate-180"        version="1.1"
       viewBox="0 0 42 42"
       xml:space="preserve"
       ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
@@ -63,12 +59,7 @@ const reviews = [
           <article class="flex flex-col items-center justify-between p-4">
             <div class="bg-primary size-16 rounded-full p-4">
               <svg
-                viewBox="0 0 16 16"
-                fill="white"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                fill="#000000"
+                fill="white"                  fill="#000000"                  version="1.1"                  viewBox="0 0 16 16"                  xmlns="http://www.w3.org/2000/svg"                  xmlns:xlink="http://www.w3.org/1999/xlink"
               >
                 <>
                   <g id="SVGRepo_bgCarrier" stroke-width="0" />
@@ -80,10 +71,7 @@ const reviews = [
                   <g id="SVGRepo_iconCarrier">
                     {" "}
                     <rect
-                      width="16"
-                      height="16"
-                      id="icon-bound"
-                      fill="none"
+                      fill="none"                        height="16"                        id="icon-bound"                        width="16"
                     />{" "}
                     <path d="M16,3V1c-4.188,0-7,2.812-7,7v7h7V8h-5C11,4.916,12.916,3,16,3z M0,8v7h7V8H2c0-3.084,1.916-5,5-5V1C2.812,1,0,3.812,0,8z" />{" "}
                   </g>
@@ -99,13 +87,10 @@ const reviews = [
   </div>
 
   <button
-    id="next"
-    class="text-primary w-12 cursor-pointer hover:scale-120 transition-transform duration-200 ease-out"
+    class="text-primary w-12 cursor-pointer hover:scale-120 transition-transform duration-200 ease-out"      id="next"
   >
     <svg
-      class="fill-primary"
-      version="1.1"
-      baseProfile="tiny"
+      baseProfile="tiny"        class="fill-primary"        version="1.1"
       viewBox="0 0 42 42"
       xml:space="preserve"
       ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
@@ -121,7 +106,9 @@ const reviews = [
   </button>
 </section>
 
-<script is:inline>
+<script>
+  import { gsap } from 'gsap';
+
   window.addEventListener("load", () => {
     const sliders = gsap.utils.toArray(".slider");
     const slidesArray = sliders.map((slider) =>

@@ -1,19 +1,23 @@
 ---
-import Header from "../components/Header.astro";
+import Header from "@/components/Header.astro";
+import Image from "astro/components/Image.astro";
+import HeroImage from "@/assets/ham2.png";
 ---
 
 <section
-  id="home"
   class="relative w-full h-screen flex gap-4 overflow-hidden
     bg-primary text-center md:text-start
     md:bg-gradient-to-r md:from-[#F6F2F0] md:from-65% md:to-primary md:to-35%
     flex-col justify-center px-8 md:pl-16"
+  id="home"
 >
   <Header />
   <h1 class="hero-text max-w-lg text-white md:text-primary md:text-start">
     NEW YORK’S <span class="stroked">FAVORITE</span> BURGER
   </h1>
-  <p class="hero-text text-2xl max-w-lg bottom-3 left-5 text-accent md:text-black">
+  <p
+    class="hero-text text-2xl max-w-lg bottom-3 left-5 text-accent md:text-black"
+  >
     In a world so painfully serious, yet so ridiculous, you knew it was only a
     matter of time before plant-based steak became a thing.
   </p>
@@ -24,27 +28,31 @@ import Header from "../components/Header.astro";
     <span class="absolute -end-full transition-all group-hover:end-4">
       <svg
         class="size-5 rtl:rotate-180"
-        xmlns="http://www.w3.org/2000/svg"
         fill="none"
-        viewBox="0 0 24 24"
         stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
+          d="M17 8l4 4m0 0l-4 4m4-4H3"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2"
-          d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          stroke-width="2"></path>
       </svg>
     </span>
 
-    <span class="font-medium transition-all group-hover:me-4 duration-150 text-sm md:text-base">
+    <span
+      class="font-medium transition-all group-hover:me-4 duration-150 text-sm md:text-base"
+    >
       Browse Menu
     </span>
   </a>
-  <img
-    src="/ham2.png"
+  <Image
+    width={800}
+    height={600}
     alt="Burger"
     class="absolute hero-img -bottom-40 md:top-1/2 md:-translate-y-1/2 left-[50%] md:left-[65%] -translate-x-1/2 w-[clamp(300px,60vw,600px)]"
+    src={HeroImage}
   />
 </section>
 
@@ -59,8 +67,14 @@ import Header from "../components/Header.astro";
   }
 </style>
 
-<script is:inline>
+<script>
+  import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
   window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const Split = SplitText.create("h1.hero-text", {
       type: "lines",
     });
@@ -94,15 +108,15 @@ import Header from "../components/Header.astro";
         },
         "<"
       )
-      .from(
-        "#header",
-        {
-          duration: 1,
-          y: -100,
-          ease: "power2.out",
-        },
-        "<"
-      )
+      // .from(
+      //   "#header",
+      //   {
+      //     duration: 1,
+      //     y: -100,
+      //     ease: "power2.out",
+      //   },
+      //   "<"
+      // )
       .from(
         ".hero-img",
         {

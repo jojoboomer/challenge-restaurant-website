@@ -1,44 +1,44 @@
-  <section
-    class="w-full overflow-hidden relative mx-auto top-10 flex flex-col justify-center items-center bg-accent h-20 lg:h-30"
-  >
-    <div class="flex w-full items-center relative">
-      <div
-        class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)]"
-      >
-        Life is too short to eat just salads <img
-          src="/asterisc.svg"
-          alt="*"
-          class="size-12 inline mx-4"
-        />
-      </div>
-      <div
-        class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)] stroked"
-      >
-        Life is too short to eat just salads <img
-          src="/asterisc.svg"
-          alt="*"
-          class="size-12 inline mx-4"
-        />
-      </div>
-      <div
-        class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)]"
-      >
-        Life is too short to eat just salads <img
-          src="/asterisc.svg"
-          alt="*"
-          class="size-12 inline mx-4"
-        />
-      </div>
-      <div
-        class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)] stroked"
-      >
-        Life is too short to eat just salads <img
-          src="/asterisc.svg"
-          alt="*"
-          class="size-12 inline mx-4"
-        />
-      </div>
+<section
+  class="w-full overflow-hidden relative mx-auto top-10 flex flex-col justify-center items-center bg-accent h-20 lg:h-30"
+>
+  <div class="flex w-full items-center relative">
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)]"
+    >
+      Life is too short to eat just salads <img
+        alt="*"
+        class="size-12 inline mx-4"
+        src="/asterisc.svg"
+      />
     </div>
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)] stroked"
+    >
+      Life is too short to eat just salads <img
+        alt="*"
+        class="size-12 inline mx-4"
+        src="/asterisc.svg"
+      />
+    </div>
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)]"
+    >
+      Life is too short to eat just salads <img
+        alt="*"
+        class="size-12 inline mx-4"
+        src="/asterisc.svg"
+      />
+    </div>
+    <div
+      class="animated-text shrink-0 font-black text-black flex items-center justify-center text-[clamp(2.5rem,5vw,4.5rem)] stroked"
+    >
+      Life is too short to eat just salads <img
+        alt="*"
+        class="size-12 inline mx-4"
+        src="/asterisc.svg"
+      />
+    </div>
+  </div>
 </section>
 
 <style>
@@ -48,7 +48,9 @@
   }
 </style>
 
-<script is:inline>
+<script>
+  import { gsap } from "gsap";
+
   document.addEventListener("DOMContentLoaded", () => {
     const sentences = gsap.utils.toArray(".animated-text");
 

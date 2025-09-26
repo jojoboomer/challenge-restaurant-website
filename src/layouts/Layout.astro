@@ -2,15 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta content="width=device-width" name="viewport" />
+    <meta content={Astro.generator} name="generator" />
 
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <link rel="stylesheet" href="src/global.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="/icon.svg" rel="icon" type="image/svg+xml" />
+    <link href="src/global.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
 
-    <script
+    <!-- <script
       is:inline
       src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script
@@ -21,18 +21,18 @@
     <script
       is:inline
       src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"
-    ></script>
+    ></script> -->
     <!-- ScrollSmoother requires ScrollTrigger -->
-    <script
+    <!-- <script
       is:inline
       src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"
-    ></script>
+    ></script> -->
 
     <title>Jo's Restaurant</title>
   </head>
   <body>
     <div id="smooth-wrapper">
-      <main id="main" class="font-oswald bg-[#F6F2F0]">
+      <main class="font-oswald bg-[#F6F2F0]" id="main">
         <slot />
       </main>
     </div>
@@ -73,9 +73,10 @@
   }
 </style>
 
-<script is:inline>
+<script>
+  import { ScrollSmoother } from "gsap/ScrollSmoother";
+
   window.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText);
     ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#main",

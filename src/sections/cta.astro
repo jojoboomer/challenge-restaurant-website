@@ -1,21 +1,27 @@
+---
+import Image from "astro/components/Image.astro";
+import PostImage from "@/assets/organic.png";
+---
 
-<section class="relative py-0 px-2 h-[50vh] lg:h-screen bg-black ">
+<section class="relative py-0 px-2 h-[50vh] lg:h-screen bg-black">
   <div
-    class="group border rounded-lg h-full overflow-hidden bg-[url(/banner-3.png)] bg-cover bg-center flex items-center justify-center gap-2 md:gap-6"
+    class="border rounded-lg h-full overflow-hidden bg-[url(/banner-3.png)] bg-cover bg-center flex items-center justify-center gap-2 md:gap-6"
   >
-    <span class="w-fit text-cta z-10 relative uppercase font-bold text-[clamp(1.5rem,5vw,3.75rem)] font-bowlby text-primary">
+    <span
+      class="w-fit text-cta z-10 relative uppercase font-bold text-[clamp(1.5rem,5vw,3.75rem)] font-bowlby text-primary"
+    >
       we’re different
     </span>
     <div
-      class="play-cta z-10 relative peer bg-primary text-white rounded-full size-12 lg:size-16 hover:cursor-pointer flex items-center justify-center "
+      class="play-cta z-10 relative peer bg-primary text-white rounded-full size-12 lg:size-16 hover:cursor-pointer flex items-center justify-center"
     >
       <svg
-        fill="#ffffff"
         class="size-7 lg:size-10"
-        viewBox="0 0 32 32"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
+        fill="#ffffff"
         stroke="#ffffff"
+        version="1.1"
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
         ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
           id="SVGRepo_tracerCarrier"
           stroke-linecap="round"
@@ -31,12 +37,20 @@
       class="back absolute inset-0 bg-black/40 backdrop-blur-[1px] backdrop-grayscale-100 peer-hover:backdrop-grayscale-0 peer-hover:backdrop-blur-none transition-all duration-500"
     >
     </div>
-    <img src="/organic.png" alt="Organic" class="organic absolute -bottom-20 md:left-20 " />
+    <Image
+      width={200}
+      height={150}
+      alt="Organic"
+      class="organic absolute -bottom-20 md:left-20"
+      src={PostImage}
+    />
   </div>
 </section>
 
-<script is:inline>
-  gsap.from('.organic', {
+<script>
+  import { gsap } from "gsap";
+
+  gsap.from(".organic", {
     duration: 1.5,
     scale: 0,
     rotate: 360 * 2,
@@ -45,7 +59,7 @@
       trigger: ".organic",
       start: "top bottom",
     },
-  })
+  });
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -54,34 +68,33 @@
     },
   });
 
-  tl
-  .from('.text-cta', {
+  tl.from(".text-cta", {
     duration: 1,
     x: -30,
     opacity: 0,
     ease: "power1.out",
-  })
-  .from('.play-cta', {
-    duration: 1,
-    scale: 0,
-    opacity: 0,
-    ease: "bounce.out",
-  },'<');
+  }).from(
+    ".play-cta",
+    {
+      duration: 1,
+      scale: 0,
+      opacity: 0,
+      ease: "bounce.out",
+    },
+    "<"
+  );
 
   const hover = gsap.timeline();
 
   hover
-  .to('.play-cta',{
-    scale: 2,
+    .to(".play-cta", {
+      scale: 2,
+    })
+    .from(".back", {}, "<");
 
-  })
-  .from('.back',{
-
-  },'<');
-  
-  document.querySelector('.play-cta').addEventListener('mouseover', () => {
-    hover.play()
-  })
-
-
+  document
+    ?.querySelector(".play-cta-group")
+    ?.addEventListener("mouseover", () => {
+      hover.play();
+    });
 </script>
