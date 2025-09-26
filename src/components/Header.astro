@@ -132,8 +132,7 @@ const NAVIGATION = [
       /* if scrolling down, let it scroll out of view as normal */
       if (
         prevScrollpos <= currentScrollPos &&
-        currentScrollPos > headerBottom &&
-        currentScrollPos > 300
+        currentScrollPos > headerBottom
       ) {
         tlHeader.reverse();
       } else {
@@ -141,11 +140,13 @@ const NAVIGATION = [
       }
 
       if (currentScrollPos > 300) {
-        headerDiv?.classList.add("bg-white");
+        headerDiv?.classList.add("bg-primary");
+        headerDiv?.classList.add("md:bg-light");
         headerDiv?.classList.add("shadow-md");
         headerDiv?.classList.add("z-50");
       } else {
-        headerDiv?.classList.remove("bg-white");
+        headerDiv?.classList.remove("bg-primary");
+        headerDiv?.classList.remove("md:bg-light");
         headerDiv?.classList.remove("shadow-md");
         headerDiv?.classList.remove("z-50");
       }

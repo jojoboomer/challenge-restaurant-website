@@ -6,6 +6,7 @@
 }
 
 @theme {
+  --color-light: #F6F2F0;
   --color-primary: #ee4a1e;
   --font-oswald: "Oswald", sans-serif;
   --font-bowlby: "Bowlby One", sans-serif;
